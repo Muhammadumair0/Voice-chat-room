@@ -1,14 +1,9 @@
 import React, { useRef, useEffect, useReducer, useState } from "react";
 import PropTypes from "prop-types";
 import { usePeerData } from "react-peer-data";
-import SidebarActions from "components/SidebarActions";
 import UserMediaActions from "components/UserMediaActions";
 import MessageForm from "components/MessageForm";
 import MessageList from "components/MessageList";
-import ParticipantList from "components/ParticipantList";
-import Video from "components/Video";
-
-import styles from "components/Room.module.scss";
 
 const initialState = { participants: {}, streams: {} };
 
@@ -50,6 +45,7 @@ function Room({ name, username, stream }) {
   const [messages, setMessages] = useState([]);
   const [newMessagesCount, setNewMessagesCount] = useState(0);
   const [showSidebar, setShowSidebar] = useState(true);
+  const [showInput, setShowInput] = useState(false);
 
   useEffect(() => {
     if (room.current) return;
@@ -111,35 +107,60 @@ function Room({ name, username, stream }) {
     setShowSidebar(isOpen);
   };
 
+  const toggleInputControl = (toggleValue) => {
+    setShowInput(toggleValue);
+  }
+
   const { participants, streams } = state;
 
   return (
-    <div className="row">
-      {stream && (
-        <Video stream={stream} autoPlay muted className={styles.webcam} />
-      )}
-      <div className={showSidebar ? "col-md-9" : "col-md-12"}>
-        <SidebarActions
-          className={`${styles.sidebarActions} mt-2 mb-2`}
-          count={newMessagesCount}
-          isOpen={showSidebar}
-          onToggleSidebar={handleToggleSidebar}
-        />
-        <ParticipantList participants={participants} streams={streams} />
-      </div>
-      {showSidebar && (
-        <div className="col-md-3">
-          <div className={`sticky-top mt-2 mb-2 text-center`}>
-            <UserMediaActions stream={stream} />
-          </div>
-          <div className={`${styles.messageList}`}>
-            <MessageList messages={messages} />
-          </div>
-          <div className={styles.stickyBottom}>
-            <MessageForm onMessageSend={handleSendMessage} />
-          </div>
+    // <div className={"chat-room"}>
+    //   {/* {stream && (
+    //     <Video stream={stream} autoPlay muted className={styles.webcam} />
+    //   )}
+    //   <div className={showSidebar ? "col-md-9" : "col-md-12"}>
+    //     <SidebarActions
+    //       className={`${styles.sidebarActions} mt-2 mb-2`}
+    //       count={newMessagesCount}
+    //       isOpen={showSidebar}
+    //       onToggleSidebar={handleToggleSidebar}
+    //     />
+    //     <ParticipantList participants={participants} streams={streams} />
+    //   </div> */}
+    //   {/* {(
+
+    //   )}
+    // </div> */}
+    <div className={"chat-room"}>
+      <div className={"sidebar"}>
+        <div className={"profile"}>
+          <p className={"username"}>{username}</p>
+          {showInput == true ?
+            (<div className={"form-input"}>
+              <input />
+              <div className={"save-cancel"}>
+                <p onClick={e => toggleInputControl(false)}>Cancel</p>
+                <button>Save</button>
+              </div>
+            </div>)
+            :
+            <button className={"change-button"} onClick={e => toggleInputControl(true)}>Change your name</button>
+          }
+
+
         </div>
-      )}
+        <div className={"media-action"}>
+          <UserMediaActions stream={stream} />
+        </div>
+      </div>
+      <div className={"message"}>
+        <div className={"message-list"}>
+          <MessageList messages={messages} />
+        </div>
+        <div className={"message-form"}>
+          <MessageForm onMessageSend={handleSendMessage} />
+        </div>
+      </div>
     </div>
   );
 }

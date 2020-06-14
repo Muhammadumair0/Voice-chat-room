@@ -25,7 +25,7 @@ function MessageForm({ onMessageSend, ...props }) {
 
   return (
     <form {...props} onSubmit={handleFormSubmit}>
-      <div className="input-group mb-3">
+      <div className="input-group send-message">
         <textarea
           ref={inputRef}
           className="form-control"

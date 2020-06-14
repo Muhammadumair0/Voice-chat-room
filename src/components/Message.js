@@ -6,11 +6,11 @@ function Message({ username, message, incoming, ...props }) {
 
   return (
     <div
-      className={"w-100 alert " + (incoming ? "alert-primary" : "alert-success")}
+      className={"w-100 alert " + (incoming ? "alert-primary incomming-message" : "alert-success outgoing-message")}
       style={{ float }}
       role="alert"
     >
-      <strong style={{ float }}>{username}</strong>
+      <strong style={{ float }}>{(incoming ? username : username + " (You)")}</strong>
       <br />
       {message}
     </div>
