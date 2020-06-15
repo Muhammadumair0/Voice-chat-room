@@ -12,29 +12,33 @@ function App() {
   const { stream, error } = useUserMediaFromContext();
 
   const handleJoin = values => {
-      setUsername(values.username);
-      setRoom(values.room);
+    setUsername(values.username);
+    setRoom(values.room);
 
     if (window.history.pushState) {
       let newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + `?meeting_id=${values.room}`;
-      window.history.pushState({path:newurl},'',newurl);
-  }
+      window.history.pushState({ path: newurl }, '', newurl);
+    }
   };
+
+  const setNewUserName = (newUserName) => {
+    setUsername(newUserName);
+  }
 
   return (
     <div>
       {room && username ? (
-        <Room name={room} username={username} stream={stream} />
+        <Room name={room} username={username} stream={stream} onNameChange={setNewUserName} />
       ) : (
-        <Fragment>
-          {error && (
-            <div className="row justify-content-center mt-2">
-              <UserMediaError error={error} />
-            </div>
-          )}
-          <Home onJoin={handleJoin} /> 
-        </Fragment>
-      )}
+          <Fragment>
+            {error && (
+              <div className="row justify-content-center mt-2">
+                <UserMediaError error={error} />
+              </div>
+            )}
+            <Home onJoin={handleJoin} />
+          </Fragment>
+        )}
     </div>
   );
 }

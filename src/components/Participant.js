@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Video from "components/Video";
+import Stream from "components/Stream";
 
 function Participant({ stream, ...props }) {
   if (!stream) {
     return null;
   }
 
-  return <Video stream={stream} {...props} autoPlay />;
+  return <Stream stream={stream} {...props} autoPlay />;
 }
 
 Participant.propTypes = {

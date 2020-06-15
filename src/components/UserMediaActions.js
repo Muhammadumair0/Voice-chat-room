@@ -83,10 +83,6 @@ function UserMediaActions({ stream, ...props }) {
     setAudio(v => !v);
   };
 
-  const handleToggleVideo = () => {
-    setVideo(v => !v);
-  };
-
   const handleToggleFullScreen = () => {
     setFullscreen(v => !v);
   };
@@ -95,14 +91,6 @@ function UserMediaActions({ stream, ...props }) {
     <div className="btn-group" role="group" aria-label="Controls" {...props}>
       {stream && (
         <Fragment>
-          <button
-            type="button"
-            title="Toggle camera"
-            className={"btn btn-outline-" + (hasVideo ? "success" : "danger")}
-            onClick={handleToggleVideo}
-          >
-            <i className="fa fa-video-camera" aria-hidden="true" />
-          </button>
           <button
             type="button"
             title="Toggle microphone"

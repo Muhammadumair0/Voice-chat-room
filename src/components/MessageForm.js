@@ -5,12 +5,13 @@ function MessageForm({ onMessageSend, ...props }) {
   const inputRef = useRef(null);
 
   useEffect(() => {
-    if (inputRef.current) {
+    if (String(inputRef.current).includes('textarea')) {
       inputRef.current.focus();
     }
   });
 
   const handleFormSubmit = event => {
+
     event.preventDefault();
 
     const msg = inputRef.current.value;

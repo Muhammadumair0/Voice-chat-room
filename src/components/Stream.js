@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 
-function Video({ stream, muted = false, autoPlay = false, ...props }) {
+function Stream({ stream, muted = false, autoPlay = false, ...props }) {
   const element = useRef(null);
 
   useEffect(() => {
@@ -13,10 +13,10 @@ function Video({ stream, muted = false, autoPlay = false, ...props }) {
   return <video {...props} autoPlay={autoPlay} muted={muted} ref={element} />;
 }
 
-Video.propTypes = {
+Stream.propTypes = {
   stream: PropTypes.object,
   muted: PropTypes.bool,
   autoPlay: PropTypes.bool
 };
 
-export default Video;
+export default Stream;
