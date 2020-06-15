@@ -14,9 +14,9 @@ function UserMediaActions({ stream, ...props }) {
   );
   const [isFullscreen, setFullscreen] = useState(
     document.fullscreenElement ||
-      document.mozFullScreenElement ||
-      document.webkitFullscreenElement ||
-      document.msFullscreenElement
+    document.mozFullScreenElement ||
+    document.webkitFullscreenElement ||
+    document.msFullscreenElement
   );
 
   useEffect(() => {
@@ -24,7 +24,7 @@ function UserMediaActions({ stream, ...props }) {
       return;
     }
 
-    stream.getAudioTracks().forEach(function(track) {
+    stream.getAudioTracks().forEach(function (track) {
       track.enabled = hasAudio;
     });
   }, [stream, hasAudio]);
@@ -34,7 +34,7 @@ function UserMediaActions({ stream, ...props }) {
       return;
     }
 
-    stream.getVideoTracks().forEach(function(track) {
+    stream.getVideoTracks().forEach(function (track) {
       track.enabled = hasVideo;
     });
   }, [stream, hasVideo]);

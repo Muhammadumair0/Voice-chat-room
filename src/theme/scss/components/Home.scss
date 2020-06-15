@@ -1,0 +1,101 @@
+.header {
+    height: 100vh;
+    background-image: linear-gradient(
+        to right bottom,
+        rgba(76, 216, 255, 0.8),
+        rgba(30, 108, 217, 0.8)
+      ),
+      url("https://brightfuturestreatment.com/wp-content/uploads/2018/03/Two-guys-with-smart-phone-538031836_2125x1416.jpeg");
+  
+    background-size: cover;
+    background-position: top;
+    position: relative;
+  
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  }
+  
+  .brand-box {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+  }
+  
+  .brand {
+    font-size: 20px;
+  }
+  
+  .text-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  .heading-primary {
+    color: #fff;
+    text-transform: uppercase;
+  
+    backface-visibility: hidden;
+    margin-bottom: 30px;
+  }
+  
+  .heading-primary-main {
+    display: block;
+    font-size: 26px;
+    font-weight: 400;
+    letter-spacing: 5px;
+  }
+  
+  .heading-primary-sub {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 7.4px;
+  }
+  
+  .host-button:link,
+  .host-button:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: inline-block;
+    border-radius: 100px;
+    transition: all 0.2s;
+    position: relative;
+  }
+  
+  .host-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
+  
+  .host-button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .host-button {
+    background-color: #fff;
+    color: #777 !important;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: inline-block;
+    border-radius: 100px;
+    transition: all 0.2s;
+    position: relative;
+  }
+  
+  .host-button:link,
+  .host-button:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: inline-block;
+    border-radius: 100px;
+    transition: all 0.2s;
+    position: relative;
+  }

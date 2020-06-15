@@ -11,7 +11,16 @@ function MessageForm({ onMessageSend, ...props }) {
   });
 
   const handleFormSubmit = event => {
+    sendMessage(event);
+  };
 
+  const onEnterSendMessage = event => {
+    if (event.key === 'Enter') {
+      sendMessage(event);
+    }
+  }
+
+  const sendMessage = event => {
     event.preventDefault();
 
     const msg = inputRef.current.value;
@@ -22,7 +31,7 @@ function MessageForm({ onMessageSend, ...props }) {
     onMessageSend(msg);
 
     inputRef.current.value = "";
-  };
+  }
 
   return (
     <form {...props} onSubmit={handleFormSubmit}>
@@ -32,6 +41,7 @@ function MessageForm({ onMessageSend, ...props }) {
           className="form-control"
           placeholder="Type a message..."
           aria-label="Type a message..."
+          onKeyDown={onEnterSendMessage}
         />
         <div className="input-group-append">
           <button className="btn btn-primary" type="submit">

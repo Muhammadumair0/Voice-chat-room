@@ -120,7 +120,7 @@ function Room({ name, username, stream, ...props }) {
   }
 
   const nameValueHandler = (event) => {
-      setNameValue(event.target.value)
+    setNameValue(event.target.value)
   }
 
   const saveNameChange = () => {
@@ -129,23 +129,6 @@ function Room({ name, username, stream, ...props }) {
   }
 
   return (
-    // <div className={"chat-room"}>
-    //   {/* {stream && (
-    //     <Video stream={stream} autoPlay muted className={styles.webcam} />
-    //   )}
-    //   <div className={showSidebar ? "col-md-9" : "col-md-12"}>
-    //     <SidebarActions
-    //       className={`${styles.sidebarActions} mt-2 mb-2`}
-    //       count={newMessagesCount}
-    //       isOpen={showSidebar}
-    //       onToggleSidebar={handleToggleSidebar}
-    //     />
-    //     <ParticipantList participants={participants} streams={streams} />
-    //   </div> */}
-    //   {/* {(
-
-    //   )}
-    // </div> */}
     <div className={"chat-room"}>
       <div className={"sidebar"}>
         <div className={"sidebar-header"}>
@@ -155,7 +138,7 @@ function Room({ name, username, stream, ...props }) {
           <p className={"username"} onClick={e => toggleInputControl(true)}>{username}</p>
           {showInput === true ?
             (<div className={"form-input"}>
-              <input value={nameValue} onChange={nameValueHandler}/>
+              <input value={nameValue} onChange={nameValueHandler} />
               <div className={"save-cancel"}>
                 <p onClick={e => toggleInputControl(false)}>Cancel</p>
                 <button onClick={saveNameChange}>Save</button>
