@@ -5,6 +5,12 @@
 @import "font-awesome/font-awesome";
 @import "components/Home.scss";
 @import "components/Chat-room.scss";
+@import "components/Loading.scss";
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
 
 body {
   font-family: "Lato", sans-serif;

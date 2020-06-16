@@ -5,6 +5,7 @@ import {
 } from "@vardius/react-user-media";
 import Room from "components/Room";
 import Home from "components/Home";
+import Loading from "components/Loading";
 
 function App() {
   const [room, setRoom] = useState(null);
@@ -31,7 +32,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div style={{height:'100%'}}>
       {room && username && isLoading ? (
         <Room name={room} username={username} stream={stream} onNameChange={setNewUserName} />
       ) : (
@@ -42,6 +43,7 @@ function App() {
               </div>
             )}
             { isLoading == false && <Home onJoin={handleJoin} />}
+            { !room && !username && isLoading && <div className={'loading-parent'}><Loading /></div> }
           </Fragment>
         )}
     </div>
