@@ -8,18 +8,12 @@ function Home({ onJoin, ...props }) {
     const meetingId = new URLSearchParams(window.location.search).get('meeting_id');
 
     const handleClick = () => {
-        if (!meetingId) {
             onJoin({ room: uuidv4(), username: funnyName() });
-        } else {
-            onJoin({ room: meetingId, username: funnyName() });
-        }
     }
 
     useEffect(() => {
         if(meetingId) {
-            setTimeout(() => {
                 onJoin({ room: meetingId, username: funnyName() });
-            }, 4000);
         }
     }, []);
 

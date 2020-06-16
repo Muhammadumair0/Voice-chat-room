@@ -10,10 +10,15 @@ function App() {
   const [room, setRoom] = useState(null);
   const [username, setUsername] = useState(null);
   const { stream, error } = useUserMediaFromContext();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleJoin = values => {
-    setUsername(values.username);
-    setRoom(values.room);
+    setIsLoading(true);
+    setTimeout(() => {
+      setUsername(values.username);
+      setRoom(values.room);
+    }, 3000);
+
 
     if (window.history.pushState) {
       let newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + `?meeting_id=${values.room}`;
@@ -27,7 +32,7 @@ function App() {
 
   return (
     <div>
-      {room && username ? (
+      {room && username && isLoading ? (
         <Room name={room} username={username} stream={stream} onNameChange={setNewUserName} />
       ) : (
           <Fragment>
@@ -36,7 +41,7 @@ function App() {
                 <UserMediaError error={error} />
               </div>
             )}
-            <Home onJoin={handleJoin} />
+            { isLoading == false && <Home onJoin={handleJoin} />}
           </Fragment>
         )}
     </div>
