@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import * as funnyName from 'sillyname';
 import PropTypes from "prop-types";
@@ -15,7 +15,15 @@ function Home({ onJoin, ...props }) {
         }
     }
 
-    return (
+    useEffect(() => {
+        if(meetingId) {
+            setTimeout(() => {
+                onJoin({ room: meetingId, username: funnyName() });
+            }, 2500);
+        }
+    }, []);
+
+    return (!meetingId && 
         <header className={"header"}>
             <div className={"brand-box"}>
                 <span className={"brand"}>Voice chat room</span>
@@ -26,9 +34,7 @@ function Home({ onJoin, ...props }) {
                     <span className={"heading-primary-main"}>Audio Conferencing for the Digital Workplace</span>
                     <span className={"heading-primary-sub"}>Try it. It's simple.</span>
                 </h1>
-                <a className={"host-button"} onClick={handleClick}>{
-                    meetingId
-                        ? 'Join meeting' : 'Host a meeting'}</a>
+                <a className={"host-button"} onClick={handleClick}>Host a meeting</a>
             </div>
         </header>
     );
