@@ -19,7 +19,7 @@ function Home({ onJoin, ...props }) {
         if(meetingId) {
             setTimeout(() => {
                 onJoin({ room: meetingId, username: funnyName() });
-            }, 2500);
+            }, 4000);
         }
     }, []);
 
