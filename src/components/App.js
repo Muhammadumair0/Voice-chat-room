@@ -18,7 +18,7 @@ function App() {
     setTimeout(() => {
       setUsername(values.username);
       setRoom(values.room);
-    }, 3000);
+    }, 6000);
 
 
     if (window.history.pushState) {
